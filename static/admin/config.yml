@@ -1,0 +1,64 @@
+backend:
+  name: git-gateway
+  branch: master # Branch to update (optional; defaults to master)
+publish_mode: editorial_workflow # Allows you to save drafts before publishing them
+media_folder: "static/uploads" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/uploads" # The src attribute for uploaded media will begin with /images/uploads
+
+site_url: https://friendsofacsd.netlify.com
+display_url: https://friendsofacsd.netlify.com
+
+collections:
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "Home Page"
+        name: "index"
+        file: "static/_content/index.yml"
+        format: frontmatter
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "pug", output_code_only: true }
+      - label: "About Page"
+        name: "about"
+        file: "static/_content/about.yml"
+        format: frontmatter
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Body", name: "body", widget: "pug", output_code_only: true }
+  - name: "reviews" # Used in routes, e.g., /admin/collections/blog
+    label: "Reviews" # Used in the UI
+    folder: "static/_content/reviews" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    # slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., title.md
+    preview_path: "/reviews/{{slug}}"
+    format: frontmatter
+    extension: md
+    fields: # The fields for each document, usually in front matter
+      - {label: "brand", name: "brand", widget: "string"}
+      - {label: "title", name: "title", widget: "string"}
+      - {label: "body", name: "body", widget: "markdown"}
+  - name: "discussions" # Used in routes, e.g., /admin/collections/blog
+    label: "Discussions" # Used in the UI
+    folder: "static/_content/discussions" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., title.md
+    preview_path: "/discussions/{{slug}}"
+    format: frontmatter
+    extension: pug
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Description", name: "description", widget: "string"}
+      - {label: "Order of appearce(lowest is on top)", name: "order", widget: "number", valueType: "int", default: 0}
+      - {label: "body", name: "body", widget: "pug", output_code_only: true}
+  - name: "shared" # Used in routes, e.g., /admin/collections/blog
+    label: "Shared Snippets" # Used in the UI
+    folder: "static/_content/shared" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template, e.g., title.md
+    format: frontmatter
+    extension: pug
+    fields: # The fields for each document, usually in front matter
+      - {label: "title", name: "title", widget: "string"}
+      - {label: "body", name: "body", widget: "pug", output_code_only: true }
+  

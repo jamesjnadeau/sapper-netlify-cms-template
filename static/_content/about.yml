@@ -1,0 +1,31 @@
+title: About Page
+body: |+
+  h1.text-center About
+  
+  p We are a group of local residents who wish to have serious, fact-based, discussions on what we want the future of the ACSD to look like.
+
+  p Want to help us? Have something to say? Fill out the form below to contact us
+
+  form(name='contact_us', method='POST', netlify='', netlify-honeypot='bot-field')
+    input(type='hidden', name='form-name', value='contact_us')
+    .d-none
+      label
+        | Don’t fill this out if you're human:
+      input(name='bot-field')
+    .form-group.row.align-items-center
+      .col-8
+        label.sr-only(for="contatEmail") Your Email:
+        input.form-control(type='email', name='email', id="contatEmail", placeholder="your_email@example.com", required)
+    .form-group.row.align-items-center
+      .col-8
+        label.sr-only(for="contatMessage") Your Message:
+        textarea#contatMessage.form-control(name="contatMessage"  rows="5" maxlength="2000" required)
+    .form-group.row.align-items-center
+      .col-3
+        button.btn.btn-primary(type='submit')
+          | Send
+
+
+  p.text-center
+    small.text-muted
+      a(href='/privacy-policy') Our Privacy Policy

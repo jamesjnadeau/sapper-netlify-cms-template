@@ -1,0 +1,19 @@
+#header {
+  background-color: #fff;
+  border-bottom: .01rem solid black;
+  a.brand.navbar-brand {
+    font-size: 2rem;
+    img {
+      max-height: 50px;
+    }
+  }
+
+  .navbar-nav {
+    font-size: 1.4rem;
+  }
+}
+
+.content, h1 {
+  max-width: 800px;
+  margin: auto;
+}
